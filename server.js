@@ -1,5 +1,6 @@
 const app = require("./app");
 const env = require("dotenv");
+const { Sequelize } = require('sequelize');
 env.config();
 
 const http = require("http");
@@ -9,3 +10,4 @@ const PORT = process.env.PORT;
 app.listen(PORT, () =>
   console.log(`server running url :  http://localhost:${PORT}/`),
 );
+

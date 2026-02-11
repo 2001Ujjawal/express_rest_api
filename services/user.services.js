@@ -1,7 +1,21 @@
+const model = require("../models");
+// const commonUtils = ; 
 
+function userRegister(req) {
 
-function createUser(req) {}
+}
+
+async function getUsers() {
+  try {
+    const users = await model.UserRegisterModel.findAll();
+    console.log(users) ;
+    return users;
+  } catch (error) {
+    throw error;
+  }
+}
 
 module.exports = {
-  createUser: createUser,
+  userRegister,
+  getUsers,
 };

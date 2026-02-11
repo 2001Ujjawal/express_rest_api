@@ -1,14 +1,13 @@
 const express = require("express");
 const app = express();
-const demoRoutes = require("./routes/demo.routes");
+app.use(express.json());
+app.use("./upload", express.static("uploads"));
 
-app.get("/", (request, response) => {
-  return response.send("hello world");
-});
+const userRoutes = require("./routes/user.routes");
+const imageRoutes = require("./routes/image.routes");
+console.log("===============", imageRoutes);
 
-
-app.use(demoRoutes);
-
+app.use(imageRoutes);
+app.use(userRoutes);
 console.log("node server run");
-
 module.exports = app;
