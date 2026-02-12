@@ -2,7 +2,6 @@ const responseUtil = require("../utils/response.utils");
 
 function upload(req, res) {
   try {
-    console.log("image upload file");
     if (req.file.filename) {
       return responseUtil.successHandle(
         res,
@@ -16,7 +15,6 @@ function upload(req, res) {
     }
   } catch (error) {
     console.log("================= file upload error ", error);
-
     return responseUtil.catchErrorHandle(res, error);
   }
 }

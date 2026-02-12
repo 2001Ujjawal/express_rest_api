@@ -8,7 +8,6 @@ function userRegister(req) {
 async function getUsers() {
   try {
     const users = await model.UserRegisterModel.findAll();
-    console.log(users) ;
     return users;
   } catch (error) {
     throw error;

@@ -21,15 +21,23 @@ function errorHandle(
     errors: errors,
   });
 }
-
 function catchErrorHandle(res, error) {
   return res.status(500).json({
     success: false,
     statusCode: 500,
-    message: "catch error throw",
-    error: error ?? null,
+    message: error?.message,
+    error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
   });
 }
+
+// function catchErrorHandle(res, error) {
+//   return res.status(500).json({
+//     success: false,
+//     statusCode: 500,
+//     message: "catch error throw",
+//     error: error ?? null,
+//   });
+// }
 
 module.exports = {
   successHandle,
