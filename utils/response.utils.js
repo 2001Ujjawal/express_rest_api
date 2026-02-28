@@ -26,7 +26,10 @@ function catchErrorHandle(res, error) {
     success: false,
     statusCode: 500,
     message: error?.message,
-    error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
+    error: {
+      originalError: error.original,
+      error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
+    },
   });
 }
 

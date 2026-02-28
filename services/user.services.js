@@ -1,13 +1,38 @@
 const model = require("../models");
-// const commonUtils = ; 
+const commonUtil = require("../utils/common.utils");
 
-function userRegister(req) {
+async function userRegister(data) {
+  try {
+    const { name, email, password, mobile } = data;
+    const existingUser = await model.UserRegisterModel.findOne({
+      where: { email },
+    });
 
+    if (existingUser) {
+      throw new Error("Email already exists");
+    }
+
+    return await model.UserRegisterModel.create({
+      full_name: name,
+      uid: await commonUtil.generateUid(),
+      email,
+      password,
+      mobile,
+    });
+  } catch (error) {
+    throw error;
+  }
 }
 
 async function getUsers() {
   try {
-    const users = await model.UserRegisterModel.findAll();
+    const users = await model.UserRegisterModel.findAll({
+      order:[["createdAt" , "DESC"]] ,
+      attributes: ["id", "full_name", "email"],
+      limit:1,
+      offset:2
+    });
+
     return users;
   } catch (error) {
     throw error;

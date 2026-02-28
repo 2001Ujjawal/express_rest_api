@@ -50,10 +50,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "UserRegisterModel",
-      tableName: "user_registrations", 
+      tableName: "user_registrations",
       timestamps: true,
-    }
+    },
   );
-
+  console.log(UserRegisterModel);
   return UserRegisterModel;
 };
