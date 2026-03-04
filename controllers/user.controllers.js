@@ -41,12 +41,13 @@ async function createUser(req, res) {
       true,
       201,
       "User Created SuccessFully ! please login",
-      { user: createUser },
+      // { user: createUser },
     );
   } catch (error) {
     return responseUtil.catchErrorHandle(res, error);
   }
 }
+
 
 module.exports = {
   userRegister: userRegister,

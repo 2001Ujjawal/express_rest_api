@@ -8,7 +8,7 @@ app.use("./upload", express.static("uploads"));
 const userRoutes = require("./routes/user.routes");
 const imageRoutes = require("./routes/image.routes");
 const authRoutes = require("./routes/auth.routes");
+app.use(authRoutes);
 app.use(imageRoutes);
 app.use(userRoutes);
-app.use(authRoutes);
 module.exports = app;

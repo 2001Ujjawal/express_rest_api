@@ -12,4 +12,5 @@ router.post(
   validate(registerSchema),
   userController.createUser,
 );
+
 module.exports = router;

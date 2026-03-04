@@ -13,6 +13,4 @@ const userLoginSchema = Joi.object({
   }),
 });
 
-module.exports = {
-  userLoginSchema,
-};
+module.exports = {userLoginSchema};
