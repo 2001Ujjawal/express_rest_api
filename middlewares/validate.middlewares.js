@@ -1,16 +1,18 @@
+const { errorHandle } = require("../utils/response.utils");
 
 const validate = (schema) => {
   return (req, res, next) => {
-    
+    if (!req.body) {
+      return errorHandle(res, false, 500, "Request body is empty");
+    }
     const { error, value } = schema.validate(req.body, {
       abortEarly: false,
       allowUnknown: false,
       stripUnknown: true,
     });
-
+    
     if (error) {
       console.log("check error object");
-
       return res.status(422).json({
         status: false,
         statusCode: 422,
@@ -21,7 +23,6 @@ const validate = (schema) => {
         })),
       });
     }
-
     req.body = value;
     next();
   };
@@ -97,4 +98,3 @@ module.exports = validate;
   };
 };
 module.exports = validate; */
-
