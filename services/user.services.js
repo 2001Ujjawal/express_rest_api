@@ -11,7 +11,9 @@ async function createUser(requestData) {
     });
 
     if (existingUser) {
-      throw new Error("Email already exists");
+      const error = new Error("Email already exists");
+      error.statusCode = 409;
+      throw error;
     }
     const hashPassword = await bcrypt.hash(password, 10);
     return await model.UserModel.create({
