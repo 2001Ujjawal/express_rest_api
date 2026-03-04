@@ -22,9 +22,10 @@ function errorHandle(
   });
 }
 function catchErrorHandle(res, error) {
-  return res.status(500).json({
+  const statusCode = error.statusCode|| 500 ; 
+  return res.status(statusCode).json({
     success: false,
-    statusCode: 500,
+    statusCode: statusCode,
     message: error?.message,
     error: {
       originalError: error.original,
