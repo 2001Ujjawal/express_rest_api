@@ -32,25 +32,13 @@ async function usersList(req, res) {
   }
 }
 
-async function createUser(req, res) {
-  try {
-    const createUser = await userService.createUser(req.body);
 
-    return responseUtil.successHandle(
-      res,
-      true,
-      201,
-      "User Created SuccessFully ! please login",
-      // { user: createUser },
-    );
-  } catch (error) {
-    return responseUtil.catchErrorHandle(res, error);
-  }
+async function addUserDetails(req, res) {
+  return responseUtil.successHandle(res, true, 201, "user details added ", {});
 }
-
 
 module.exports = {
   userRegister: userRegister,
   usersList,
-  createUser,
+  addUserDetails,
 };
