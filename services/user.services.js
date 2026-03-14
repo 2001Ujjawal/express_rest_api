@@ -41,12 +41,13 @@ async function userRegister(data) {
     if (existingUser) {
       throw new Error("Email already exists");
     }
+    const hashPassword = await bcrypt.hash(password, 10);
 
     return await model.UserRegisterModel.create({
       full_name: name,
       uid: await commonUtil.generateUid(),
       email,
-      password,
+      password: hashPassword,
       mobile,
     });
   } catch (error) {
