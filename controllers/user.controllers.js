@@ -32,13 +32,44 @@ async function usersList(req, res) {
   }
 }
 
-
 async function addUserDetails(req, res) {
-  return responseUtil.successHandle(res, true, 201, "user details added ", {});
+  try {
+    const addUserDetails = await userService.addUserDetails(req.body);
+    return responseUtil.successHandle(
+      res,
+      true,
+      201,
+      "Added user details successfully",
+    );
+  } catch (error) {
+    return responseUtil.catchErrorHandle(res, error);
+  }
+}
+
+async function userDetails(req, res) {
+  try {
+    const userId = req.params.id;
+    const getUserDetails = await userService.userDetails(userId);
+    if (getUserDetails.length === 0) {
+      return responseUtil.errorHandle(res, false, 404, "User not found");
+    }
+    return responseUtil.successHandle(
+      res,
+      true,
+      200,
+      "Get user details successfully",
+      {
+        userDetails: getUserDetails || [],
+      },
+    );
+  } catch (error) {
+    return responseUtil.catchErrorHandle(res, error);
+  }
 }
 
 module.exports = {
   userRegister: userRegister,
   usersList,
   addUserDetails,
+  userDetails,
 };

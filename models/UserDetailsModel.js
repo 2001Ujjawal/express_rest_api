@@ -14,20 +14,20 @@ module.exports = (sequelize, DataTypes) => {
   UserDetailsModel.init(
     {
       uid: DataTypes.STRING,
-      user_id: DataTypes.STRING,
-      address: DataTypes.string,
-      phone: DataTypes.string,
+      user_uid: DataTypes.STRING,
+      address: DataTypes.STRING,
+      phone: DataTypes.STRING,
       status: {
         type: DataTypes.ENUM("active", "inactive", ""),
         allowNull: false,
         defaultValue: "active",
       },
-      second_address: DataTypes.string,
+      second_address: DataTypes.STRING,
     },
     {
       sequelize,
       modelName: "UserDetailsModel",
-      tableName: user_details,
+      tableName: "user_details",
       timestamps: true,
     },
   );

@@ -9,6 +9,7 @@ const userController = require("../controllers/user.controllers");
 const router = express.Router();
 router.post("/users", validate(registerSchema), userController.userRegister);
 router.get("/users", userController.usersList);
+router.get("/users/:id", userController.userDetails);
 
 router.post(
   "/users/details",

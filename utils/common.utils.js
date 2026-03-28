@@ -4,4 +4,4 @@ async function generateUid() {
   return uuidv4();
 }
 
-module.exports = {generateUid} ;
+module.exports = { generateUid };

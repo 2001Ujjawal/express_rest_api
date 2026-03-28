@@ -21,6 +21,8 @@ function errorHandle(
     errors: errors,
   });
 }
+
+
 function catchErrorHandle(res, error) {
   const statusCode = error.statusCode|| 500 ; 
   return res.status(statusCode).json({
