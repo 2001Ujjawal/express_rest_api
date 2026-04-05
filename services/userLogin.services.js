@@ -5,6 +5,8 @@ class UserLoginService {
   async validationUserCredentials(data) {
     const { email, password } = data;
 
+    console.log("user login data" , data);
+    
     const user = await model.UserRegisterModel.findOne({ where: { email } });
 
     if (!user) return false;

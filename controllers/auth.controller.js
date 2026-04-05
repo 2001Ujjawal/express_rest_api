@@ -16,6 +16,8 @@ async function userLogin(req, res) {
     const authData = {
       rememberToken: checkLoginCredentials.rememberToken,
     };
+    console.log("=========== auth data" , authData);
+    
     return successHandle(res, true, 200, "User login successfully", {
       user: authData,
     });
@@ -27,3 +29,5 @@ async function userLogin(req, res) {
 module.exports = {
   userLogin,
 };
+
+
